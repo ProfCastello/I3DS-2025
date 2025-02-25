@@ -13,7 +13,7 @@
   --surface-color: rgba(255, 255, 255, 0.1);
   --surface-color-hover: rgba(255, 255, 255, 0.5);
   --switch-bg-url: url(./img/MoonStars.svg);
-  --highlight-color: rgba(164, 109, 109, 0.2);
+  --highlight-color: rgba(255, 255, 255, 0.2);
 }
 
 .light {
