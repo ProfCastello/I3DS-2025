@@ -3,26 +3,98 @@ import Footer from "./components/footer/Footer";
 import MovieCard from "./components/movieCard/MovieCard";
 // import Logo from "";
 
-function App() {
-
+const App = () => {
   const movies = [
     {
-      year: "2014",
-      type: "Sci-Fi",
-      title: "Interstellar",
+      Year: "2044",
+      Type: "Sci-Fi",
+      Title: "Interstellar",
       director: "Christopher Nolan",
       rating: 8.6,
-      poster: "https://image.tmdb.org/t/p/w300/qgW5ZP6ox77d9heR9ZxTxTO1Tuj.jpg"
+      Poster: "https://placehold.co/850x480",
     },
     {
-      year: "2010",
-      type: "Action",
-      title: "Inception",
+      Year: "2010",
+      Type: "Action",
+      Title: "Inception",
       boxOffice: "$836.8M",
       rating: 8.8,
-      poster: "https://image.tmdb.org/t/p/w300/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg"
-    }
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "The Expendables",
+      boxOffice: "Não disponível na API",
+      rating: 6.5,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "Iron Man 2",
+      boxOffice: "Não disponível na API",
+      rating: 7.0,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "Robin Hood",
+      boxOffice: "Não disponível na API",
+      rating: 6.7,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "Shutter Island",
+      boxOffice: "Não disponível na API",
+      rating: 8.2,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "Kick-Ass",
+      boxOffice: "Não disponível na API",
+      rating: 7.6,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "Predators",
+      boxOffice: "Não disponível na API",
+      rating: 6.4,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "The A-Team",
+      boxOffice: "Não disponível na API",
+      rating: 6.6,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "Clash of the Titans",
+      boxOffice: "Não disponível na API",
+      rating: 5.8,
+      Poster: "https://placehold.co/850x480",
+    },
+    {
+      Year: "2010",
+      Type: "Action",
+      Title: "Salt",
+      boxOffice: "Não disponível na API",
+      rating: 6.5,
+      Poster: "https://placehold.co/850x480",
+    },
   ];
+
   return (
     <div id="app">
       <img className="logo" src={"https://placehold.co/200x200"} alt="" />
@@ -32,22 +104,9 @@ function App() {
         <img src={"https://placehold.co/20x20"} alt="" />
       </div>
 
-      <MovieCard
-        year={2024}
-        type={"Movie"}
-        title={"Batman"}
-        poster={"https://placehold.co/300x444"}
-      />
-
-      <MovieCard
-        year={2025}
-        type={"Serie"}
-        title={"NovoEnsinoMédio o Retorno"}
-        poster={"https://placehold.co/300x444"}
-        description={
-          "Descricao alternativa para o titulo que bnasi saifnia iajsdijijghaiok?"
-        }
-      />
+      {movies.map((movie, index) => (
+        <MovieCard key={index} {...movie} />
+      ))}
 
       <Footer
         devName={" ProfCastello"}
@@ -55,6 +114,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;
