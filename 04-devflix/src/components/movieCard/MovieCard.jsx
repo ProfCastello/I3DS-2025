@@ -7,9 +7,14 @@ const MovieCard = (props) => {
         <p>{props.Year}</p>
       </div>
 
-      <img src={props.Poster} alt="" />
-      <h4>{props.Type}</h4>
-      <h3>{props.Title}</h3>
+      <div>
+        <img src={props.Poster} alt="" />
+      </div>
+      
+      <div>
+        <span>{props.Type}</span>
+        <h3>{props.Title}</h3>
+      </div>
     </div>
   );
 };
