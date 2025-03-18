@@ -11,7 +11,7 @@ const App = () => {
 
   //Utilizando chave de API do arquivo .env
   // const apiKey = import.meta.env.VITE_OMDB_API_KEY;
-  const apiKey = "e4d577fa";
+  const apiKey = "b5835fbb";
   const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
 
   //Alimentando com dados para não ficar nulo com useEffect
