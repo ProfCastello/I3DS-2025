@@ -25,7 +25,6 @@ const App = () => {
 
     //alimentando o movies
     setMovies(data.Search);
-    console.log(data);
   };
 
   //e = evento | ao clicar ou digitar acontece algo
