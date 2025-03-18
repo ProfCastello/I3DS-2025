@@ -25,6 +25,7 @@ const App = () => {
 
     //alimentando o movies
     setMovies(data.Search);
+    console.log(data);
   };
 
   //e = evento | ao clicar ou digitar acontece algo
@@ -49,7 +50,7 @@ const App = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
-            <MovieCard key={index} {...movie} />
+            <MovieCard key={index} apiUrl={apiUrl} {...movie} />
           ))}
         </div>
       ) : (
