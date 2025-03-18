@@ -11,7 +11,7 @@ const MovieDescription = (props) => {
       .then((data) => setMovieDesc(data))
       .catch((error) => console.error(error));
   }, []);
-  console.log(movieDesc);
+
   return (
     <div className={styles.modalBackdrop} onClick={props.click}>
       <div className={styles.movieModal} onClick={(e) => e.stopPropagation()}>
