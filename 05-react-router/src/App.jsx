@@ -10,8 +10,16 @@ import Contato from "./pages/Contato";
 import Home from "./pages/Home";
 import NaoEncontrado from "./pages/NaoEncontrado";
 import Footer from "./components/footer/Footer";
+import { useEffect, useState } from "react";
 
 function App() {
+  //Faz o react-spring funcionar na versão 19.0.0 do react
+  const [, setFuncionaSpring] = useState(0);
+
+  useEffect(() => {
+    setFuncionaSpring((prevKey) => prevKey + 1);
+  }, []);
+  //---------------------------------------------
   return (
     <div className="d-flex flex-column min-vh-100 m-0 p-0">
       <BrowserRouter>
