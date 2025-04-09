@@ -2,23 +2,45 @@ import React, { useRef } from "react";
 import io from "socket.io-client";
 
 const Join = (props) => {
-  //Hook useRef
   const usernameRef = useRef();
 
   const handleSubmit = async () => {
     const username = usernameRef.current.value;
+
+    // Verifica se o nome de usuário é válido
     if (!username.trim() || username.length < 3) {
       alert("Por favor, digite um nome de usuário válido.");
       return;
     }
 
-    // Criando a conexão com servidor socket
-    const servidorSocket = await io.connect("http://192.168.10.123:3001");
-    servidorSocket.emit("set_username", username);
+    try {
+      // Criando a conexão com o servidor socket
+      const servidorSocket = io("http://localhost:3001", {
+        timeout: 5000, // Timeout para a conexão
+      });
 
-    // Abrindo a pagina de chat
-    props.setSocket(servidorSocket);
-    props.visibility(true);
+      // Aguarda o evento "connect" para garantir que a conexão foi estabelecida
+      servidorSocket.on("connect", () => {
+        // Envia o nome de usuário para o servidor
+        servidorSocket.emit("set_username", username);
+
+        // Abrindo a página de chat
+        props.setSocket(servidorSocket);
+        props.visibility(true);
+      });
+
+      // Trata o evento de erro de conexão
+      servidorSocket.on("connect_error", () => {
+        alert(
+          "Não foi possível conectar ao servidor. Tente novamente mais tarde."
+        );
+      });
+    } catch (error) {
+      // Trata erros de conexão
+      alert(
+        "Erro ao conectar ao servidor. Verifique sua conexão e tente novamente."
+      );
+    }
   };
 
   return (
@@ -27,7 +49,7 @@ const Join = (props) => {
 
       <div
         id="join-box"
-        className="mt-4 bg-secondary rounded-4 py-4 px-5  d-flex flex-column justify-content-center align-items-center gap-3"
+        className="mt-4 bg-secondary rounded-4 py-4 px-5 d-flex flex-column justify-content-center align-items-center gap-3"
       >
         <h3>Bem-vindo ao devChat!</h3>
         <div className="form-floating mb-3">
@@ -37,7 +59,7 @@ const Join = (props) => {
             className="form-control"
             id="nomeUsuario"
             placeholder="Nome de usuário"
-            onKeyDown={(e) => e.key == "Enter" && handleSubmit()}
+            onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
           />
           <label htmlFor="nomeUsuario" className="">
             Nome de usuário
