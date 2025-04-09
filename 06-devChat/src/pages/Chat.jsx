@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Chat = (props) => {
-  //Fake messages data
-  const messages = [
-    {
-      authorId: 1,
-      author: "John Doe",
-      message:
-        "Olá, como vai você? Olá, como vai você?Olá, como vai você? Olá, como vai você?Olá, como vai você?",
-    },
-    { authorId: 2, author: "Jane Doe", message: "Estou bem, e você?" },
-    { authorId: 3, author: "Luca Doe", message: "Estou bem, e você?" },
-  ];
-  //------------------
+  const [messageList, setMessageList] = useState([]);
+  const messageRef = useRef();
+  const bottomRef = useRef();
+
+  useEffect(() => {
+    props.socket.on("receive_message", (data) => {
+      setMessageList((current) => [...current, data]);
+    });
+
+    return () => props.socket.off("receive_message");
+  }, [props.socket]);
+
+  useEffect(() => {
+    bottomRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [messageList]);
+
+  const handleSubmit = () => {
+    const message = messageRef.current.value;
+    if (!message.trim()) return;
+
+    props.socket.emit("message", message);
+
+    messageRef.current.value = "";
+    messageRef.current.focus();
+  };
 
   return (
     <div
@@ -24,30 +37,37 @@ const Chat = (props) => {
         id="chat-body"
         className="d-flex flex-column gap-3 overflow-y-hidden h-100"
       >
-        {messages.map((message, index) => (
+        {messageList.map((message, index) => (
           <div
-            className="align-self-start me-5 bg-dark-subtle rounded-3 p-2 text-dark"
+            className={`${
+              message.authorId === props.socket.id
+                ? "align-self-end ms-5 bg-dark"
+                : "align-self-start me-5 bg-dark-subtle text-dark "
+            } rounded-3 p-2`}
             key={index}
           >
             <div id="message-author" className="fw-bold">
               {message.author}
             </div>
-            <div id="message-text">{message.message}</div>
+            <div id="message-text">{message.text}</div>
           </div>
         ))}
+        <div ref={bottomRef} />
       </div>
 
       <div id="chat-footer" className="input-group ">
         <input
-          id="msgUser"
-          name="msgUser"
+          ref={messageRef}
+          autoFocus
           type="text"
           className="form-control bg-dark-subtle border-0"
           placeholder="Mensagem"
+          onKeyDown={(e) => e.key == "Enter" && handleSubmit()}
         />
         <button
           className="btn btn-dark m-0 input-group-text"
           id="basic-addon1"
+          onClick={() => handleSubmit()}
         >
           <i className="bi bi-send-fill"></i>
         </button>

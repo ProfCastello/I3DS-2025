@@ -35,10 +35,11 @@ const Join = (props) => {
             ref={usernameRef}
             type="text"
             className="form-control"
-            id="floatingInput"
+            id="nomeUsuario"
             placeholder="Nome de usuário"
+            onKeyDown={(e) => e.key == "Enter" && handleSubmit()}
           />
-          <label htmlFor="floatingInput" className="">
+          <label htmlFor="nomeUsuario" className="">
             Nome de usuário
           </label>
         </div>
