@@ -1,4 +1,5 @@
 import React from "react";
+import PromoCard from "./PromoCard";
 
 const Promotion = () => {
   return (
@@ -6,6 +7,7 @@ const Promotion = () => {
       <h2>Promoções</h2>
       <div id="itensPromo">
         {/* inserir os cards de pomoção */}
+        <PromoCard />
       </div>
     </div>
   );
