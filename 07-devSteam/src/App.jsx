@@ -5,7 +5,7 @@ import Promotion from "./components/Promotion";
 function App() {
   return (
     <>
-      <Header />
+      <Header contadorJogos={2} />
       <Promotion />
     </>
   );
