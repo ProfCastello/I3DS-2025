@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Header = (props) => {
+  const [usuario, setUsuario] = useState(null);
+
+  useEffect(() => {
+    const salvaUsuario = localStorage.getItem("devlogin");
+    salvaUsuario && setUsuario(JSON.parse(salvaUsuario));
+  }, []);
+
   return (
     <header className="pt-4 w-100 navbar navbar-dark bg-dark justify-content-around align-items-center">
       <div id="info" className="d-flex gap-5 w-50 justify-content-between">
@@ -18,11 +25,15 @@ const Header = (props) => {
 
       <div
         id="carrinho"
-        role="button"
-        data-bs-toggle="offcanvas" data-bs-target="#carrinhoOffCanvas"
         className="position-relative d-flex align-items-center gap-3"
       >
-        <i className="bi bi-cart4 text-light fs-2"></i>
+        {usuario && <span>Olá, {usuario.nome.split(" ")[0]}!</span>}
+        <i
+          role="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#carrinhoOffCanvas"
+          className="bi bi-cart4 text-light fs-2"
+        ></i>
 
         {props.contadorJogos > 0 && (
           <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
