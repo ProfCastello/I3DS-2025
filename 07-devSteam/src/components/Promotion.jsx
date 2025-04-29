@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import PromoCard from "./PromoCard";
+import { GlobalContext } from "../main.jsx";
 
 const Promotion = (props) => {
   const [aleatorio, setAleatorio] = useState([]);
+  const { formatarMoeda } = useContext(GlobalContext);
 
   const games = [
     {
@@ -95,12 +97,12 @@ const Promotion = (props) => {
           <PromoCard
             key={jogo.id}
             titulo={jogo.titulo}
-            preco={jogo.preco.toFixed(2)}
+            preco={jogo.preco}
+            precoFormatado={formatarMoeda(jogo.preco)}
             desconto={jogo.desconto}
             imagem={jogo.imagem}
-            //adicionando a opção de click com os itens do jogo no carrinho
+            formatarMoeda={formatarMoeda} // Passando a função para o PromoCard
             onAddCarrinho={() => props.onAddCarrinho(jogo)}
-            //callback para adicionar somente um item e não todos os itens do array
           />
         ))}
       </div>

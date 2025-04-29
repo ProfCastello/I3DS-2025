@@ -37,3 +37,7 @@ body {
 #addCarrinho:hover {
   background-color: #547625;
 }
+
+#addCarrinho:disabled {
+  background-color: #4c6b22;
+}

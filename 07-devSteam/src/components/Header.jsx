@@ -27,7 +27,19 @@ const Header = (props) => {
         id="carrinho"
         className="position-relative d-flex align-items-center gap-3"
       >
-        {usuario && <span>Olá, {usuario.nome.split(" ")[0]}!</span>}
+        {usuario && (
+          <span>
+            Olá, {usuario.nome.split(" ")[0]}!{" "}
+            <button
+              onClick={() => {
+                localStorage.removeItem("devlogin");
+                location.reload();
+              }}
+            >
+              sair
+            </button>
+          </span>
+        )}
         <i
           role="button"
           data-bs-toggle="offcanvas"

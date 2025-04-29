@@ -10,6 +10,7 @@ const Login = () => {
     e.preventDefault();
     if (nome && email) {
       localStorage.setItem("devlogin", JSON.stringify({ nome, email }));
+
       navigate("/");
     }
   };

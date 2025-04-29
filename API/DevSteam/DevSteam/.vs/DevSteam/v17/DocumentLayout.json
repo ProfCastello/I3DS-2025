@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|c:\\users\\professor\\desktop\\dev\\i3ds-2025\\api\\devsteam\\devsteam\\data\\apicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|solutionrelative:data\\apicontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|c:\\users\\professor\\desktop\\dev\\i3ds-2025\\api\\devsteam\\devsteam\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|solutionrelative:controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|c:\\users\\professor\\desktop\\dev\\i3ds-2025\\api\\devsteam\\devsteam\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|c:\\users\\professor\\desktop\\dev\\i3ds-2025\\api\\devsteam\\devsteam\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D549A5B5-B6D1-424F-80CF-8700F06100BB}|DevSteam.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Models\\Usuario.cs",
+              "RelativeToolTip": "Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T13:12:00.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T13:05:04.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "APIContext.cs",
+              "DocumentMoniker": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Data\\APIContext.cs",
+              "RelativeDocumentMoniker": "Data\\APIContext.cs",
+              "ToolTip": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Data\\APIContext.cs",
+              "RelativeToolTip": "Data\\APIContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T11:53:06.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Professor\\Desktop\\dev\\I3DS-2025\\API\\DevSteam\\DevSteam\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T11:04:13.818Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

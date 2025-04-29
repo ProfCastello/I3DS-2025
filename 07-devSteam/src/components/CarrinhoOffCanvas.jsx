@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
+import { GlobalContext } from "../main.jsx";
 
 const CarrinhoOffCanvas = (props) => {
   const navigate = useNavigate();
+  const { formatarMoeda } = useContext(GlobalContext);
 
   const total = props.carrinhoItem.reduce(
     (acc, item) =>
@@ -88,15 +90,12 @@ const CarrinhoOffCanvas = (props) => {
 
                       <div className="d-flex flex-column align-items-end">
                         <span className="text-decoration-line-through small">
-                          R$
-                          {item.preco.toFixed(2)}
+                          {formatarMoeda(item.preco)}
                         </span>
                         <span className="fw-bolder">
-                          R$
-                          {(
-                            item.preco -
-                            (item.preco * item.desconto) / 100
-                          ).toFixed(2)}
+                          {formatarMoeda(
+                            item.preco - (item.preco * item.desconto) / 100
+                          )}
                         </span>
                       </div>
                     </div>
@@ -108,11 +107,11 @@ const CarrinhoOffCanvas = (props) => {
             <hr className="text-white" />
             <div className="d-flex justify-content-between text-light fs-4">
               <strong>Total:</strong>
-              <strong>R$ {total.toFixed(2)}</strong>
+              <strong>{formatarMoeda(total)}</strong>
             </div>
             <button
               id="addCarrinho"
-              className="btn btn-success desconto border-0 w-100 mt-2 fs-5"
+              className="btn btn-success desconto text-light border-0 w-100 mt-2 fs-5"
               data-bs-toggle="offcanvas"
               data-bs-target="#carrinhoOffCanvas"
               onClick={goToCheckout}
