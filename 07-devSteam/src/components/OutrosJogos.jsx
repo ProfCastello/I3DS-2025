@@ -1,11 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import PromoCard from "./PromoCard";
-import { GlobalContext } from "../main.jsx";
+import React from "react";
+import GameCard from "./GameCard";
 
-const Promotion = (props) => {
-  const [aleatorio, setAleatorio] = useState([]);
-  const { formatarMoeda } = useContext(GlobalContext);
-
+const OutrosJogos = () => {
   const games = React.useMemo(
     () => [
       {
@@ -100,41 +96,18 @@ const Promotion = (props) => {
     []
   );
 
-  useEffect(() => {
-    const aleatorioJogos = games
-      .filter((jogo) => jogo.desconto > 0)
-      //.sort((a, b) => b.desconto - a.desconto) //ordenação por desconto decrescente
-      .sort(() => Math.random() - 0.5) //ordenação aleatória
-      .slice(0, 3);
-
-    setAleatorio(aleatorioJogos);
-  }, [games]);
-
   return (
-    <div id="promotion" className="container w-75 my-4">
+    <div id="outrosJogos" className="container w-75 my-5">
       <h2 className="text-uppercase text-center text-md-start ms-md-5 ps-md-3 mb-4">
-        Promoções
+        Outros Jogos
       </h2>
-      <div
-        id="itensPromo"
-        className="d-flex flex-wrap gap-4 justify-content-around"
-      >
-        {/* mapeando um array com react */}
-        {aleatorio.map((jogo) => (
-          <PromoCard
-            key={jogo.id}
-            titulo={jogo.titulo}
-            preco={jogo.preco}
-            precoFormatado={formatarMoeda(jogo.preco)}
-            desconto={jogo.desconto}
-            imagem={jogo.imagem}
-            formatarMoeda={formatarMoeda} // Passando a função para o PromoCard
-            onAddCarrinho={() => props.onAddCarrinho(jogo)}
-          />
+      <div id="itensJogos" className="d-flex flex-column ms-md-5 ps-md-3 gap-4">
+        {games.map((item) => (
+          <GameCard key={item.id} id={item.id} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Promotion;
+export default OutrosJogos;

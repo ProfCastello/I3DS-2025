@@ -26,8 +26,10 @@ const Header = (props) => {
 
       <div id="carrinho" className="d-flex align-items-center gap-3">
         {usuario ? (
-          <span className="d-flex align-items-center gap-2 me-5">
-            Olá, {usuario.nome.split(" ")[0]}!{" "}
+          <span className="d-flex align-items-center gap-2 me-0 me-md-5">
+            <span className="d-none d-md-block">
+              Olá, {usuario.nome.split(" ")[0]}!{" "}
+            </span>
             <div className="dropdown">
               <div
                 role="button"
@@ -39,7 +41,7 @@ const Header = (props) => {
               >
                 <img
                   src={`https://ui-avatars.com/api/?name=${usuario.nome}&background=2b87ae&color=fff`}
-                  alt="Avatar"
+                  alt={usuario.nome}
                   className="rounded-circle"
                   width="40"
                   height="40"
@@ -76,7 +78,7 @@ const Header = (props) => {
             className="d-flex gap-3 justify-content-center align-items-center text-decoration-none text-light"
           >
             <i className="bi bi-person-circle fs-3"></i>
-            <div className="d-flex flex-column m-0 w-50">
+            <div className="d-none d-md-flex flex-column m-0 w-50">
               <span className="h6 m-0">Olá, faça seu login ou cadastre-se</span>
             </div>
           </Link>
