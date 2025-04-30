@@ -12,7 +12,11 @@ const PromoCard = (props) => {
         alt="Titulo do jogo"
       />
       <div className="card-body d-flex flex-column gap-2">
-        <h5 className="card-title text-uppercase fw-bold text-light text-nowrap">
+        <h5
+          data-bs-toggle="tooltip"
+          title={props.titulo}
+          className="card-title text-uppercase text-truncate mw-100 h-100 fw-bold text-light text-nowrap"
+        >
           {props.titulo}
         </h5>
         <div className="m-0 row h-100 align-items-center justify-content-center">

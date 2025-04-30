@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const Header = (props) => {
   const [usuario, setUsuario] = useState(null);
@@ -23,35 +24,78 @@ const Header = (props) => {
         />
       </div>
 
-      <div
-        id="carrinho"
-        className="position-relative d-flex align-items-center gap-3"
-      >
-        {usuario && (
-          <span>
+      <div id="carrinho" className="d-flex align-items-center gap-3">
+        {usuario ? (
+          <span className="d-flex align-items-center gap-2 me-5">
             Olá, {usuario.nome.split(" ")[0]}!{" "}
-            <button
-              onClick={() => {
-                localStorage.removeItem("devlogin");
-                location.reload();
-              }}
-            >
-              sair
-            </button>
+            <div className="dropdown">
+              <div
+                role="button"
+                className=" border-0"
+                type="div"
+                id="dropdownPerfil"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src={`https://ui-avatars.com/api/?name=${usuario.nome}&background=2b87ae&color=fff`}
+                  alt="Avatar"
+                  className="rounded-circle"
+                  width="40"
+                  height="40"
+                />
+              </div>
+              <ul
+                className="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+                aria-labelledby="dropdownPerfil"
+              >
+                <li>
+                  <Link to={"/perfil"} className="dropdown-item">
+                    Perfil
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/"}
+                    onClick={() => {
+                      localStorage.removeItem("devlogin");
+                      location.reload();
+                    }}
+                    className="dropdown-item"
+                  >
+                    Sair
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </span>
+        ) : (
+          <Link
+            to="/login"
+            role="button"
+            className="d-flex gap-3 justify-content-center align-items-center text-decoration-none text-light"
+          >
+            <i className="bi bi-person-circle fs-3"></i>
+            <div className="d-flex flex-column m-0 w-50">
+              <span className="h6 m-0">Olá, faça seu login ou cadastre-se</span>
+            </div>
+          </Link>
         )}
-        <i
-          role="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#carrinhoOffCanvas"
-          className="bi bi-cart4 text-light fs-2"
-        ></i>
 
-        {props.contadorJogos > 0 && (
-          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {props.contadorJogos}
-          </span>
-        )}
+        <div className="position-relative">
+          <i
+            role="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#carrinhoOffCanvas"
+            className="bi bi-cart4 text-light fs-2"
+          ></i>
+
+          {props.contadorJogos > 0 && (
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {props.contadorJogos}
+            </span>
+          )}
+        </div>
       </div>
     </header>
   );

@@ -6,72 +6,75 @@ const Promotion = (props) => {
   const [aleatorio, setAleatorio] = useState([]);
   const { formatarMoeda } = useContext(GlobalContext);
 
-  const games = [
-    {
-      id: 1,
-      titulo: "Counter-Strike 2",
-      preco: 0.0,
-      desconto: 0,
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg",
-    },
-    {
-      id: 2,
-      titulo: "Cyberpunk 2077",
-      preco: 129.99,
-      desconto: 20, // 20% off
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
-    },
-    {
-      id: 3,
-      titulo: "Elden Ring",
-      preco: 249.9,
-      desconto: 35, // 35% off
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
-    },
-    {
-      id: 4,
-      titulo: "Red Dead Redemption 2",
-      preco: 199.9,
-      desconto: 40, // 40% off
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
-    },
-    {
-      id: 5,
-      titulo: "Counter-Strike 2",
-      preco: 0.0,
-      desconto: 0,
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg",
-    },
-    {
-      id: 6,
-      titulo: "Cyberpunk 2077",
-      preco: 129.99,
-      desconto: 20, // 20% off
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
-    },
-    {
-      id: 7,
-      titulo: "Elden Ring",
-      preco: 249.9,
-      desconto: 35, // 35% off
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
-    },
-    {
-      id: 8,
-      titulo: "Red Dead Redemption 2",
-      preco: 199.9,
-      desconto: 40, // 40% off
-      imagem:
-        "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
-    },
-  ];
+  const games = React.useMemo(
+    () => [
+      {
+        id: 1,
+        titulo: "Counter-Strike 2",
+        preco: 0.0,
+        desconto: 0,
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg",
+      },
+      {
+        id: 2,
+        titulo: "Cyberpunk 2077",
+        preco: 129.99,
+        desconto: 20, // 20% off
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+      },
+      {
+        id: 3,
+        titulo: "Elden Ring",
+        preco: 249.9,
+        desconto: 35, // 35% off
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+      },
+      {
+        id: 4,
+        titulo: "Red Dead Redemption 2",
+        preco: 199.9,
+        desconto: 40, // 40% off
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+      },
+      {
+        id: 5,
+        titulo: "Counter-Strike 2",
+        preco: 0.0,
+        desconto: 0,
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg",
+      },
+      {
+        id: 6,
+        titulo: "Cyberpunk 2077",
+        preco: 129.99,
+        desconto: 20, // 20% off
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+      },
+      {
+        id: 7,
+        titulo: "Elden Ring",
+        preco: 249.9,
+        desconto: 35, // 35% off
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+      },
+      {
+        id: 8,
+        titulo: "Red Dead Redemption 2",
+        preco: 199.9,
+        desconto: 40, // 40% off
+        imagem:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
     const aleatorioJogos = games
@@ -81,7 +84,7 @@ const Promotion = (props) => {
       .slice(0, 3);
 
     setAleatorio(aleatorioJogos);
-  }, []);
+  }, [games]);
 
   return (
     <div id="promotion" className="container w-75 my-4">

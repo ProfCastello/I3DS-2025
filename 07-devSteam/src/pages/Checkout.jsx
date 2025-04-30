@@ -5,14 +5,20 @@ import { GlobalContext } from "../main.jsx";
 const Checkout = () => {
   const [carrinho, setCarrinho] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
+  const [cupom, setCupom] = useState("");
+  const [cupomAplicado, setCupomAplicado] = useState(false);
+  const [cupomError, setCupomError] = useState("");
   const navigate = useNavigate();
   const { formatarMoeda } = useContext(GlobalContext);
 
-  const total = carrinho.reduce(
+  const subtotal = carrinho.reduce(
     (acc, item) =>
       acc + (item.preco - (item.preco * item.desconto) / 100) * item.quantidade,
     0
   );
+
+  const descontoCupom = cupomAplicado ? subtotal * 0.1 : 0;
+  const total = subtotal - descontoCupom;
 
   useEffect(() => {
     const itensCarrinho = localStorage.getItem("devcarrinho");
@@ -45,9 +51,26 @@ const Checkout = () => {
     }
   };
 
+  const aplicarCupom = () => {
+    if (cupom.trim().toLowerCase() === "devpedreiro") {
+      setCupomAplicado(true);
+      setCupomError("");
+    } else {
+      setCupomAplicado(false);
+      setCupomError("Cupom inválido");
+    }
+  };
+
+  const removerCupom = () => {
+    setCupom("");
+    setCupomAplicado(false);
+    setCupomError("");
+  };
+
   return (
     <div className="container py-4">
       <div className="row">
+        {/* ... Coluna do carrinho permanece a mesma ... */}
         <div className="col-lg-8">
           <div
             className="card border-0 shadow-sm rounded-4 mb-4"
@@ -95,7 +118,7 @@ const Checkout = () => {
                       </div>
                       <div className="col-md-4 col-12 mt-3 mt-md-0">
                         <div className="row align-items-center">
-                          <div className="col-6">
+                          <div className="col-4 col-md-5">
                             <div className="border border-dark-subtle border-1 d-flex align-items-center rounded-4 gap-2">
                               <button
                                 className="btn border-0"
@@ -158,26 +181,85 @@ const Checkout = () => {
             <div className="card-header border-bottom-0 py-3">
               <h4 className="mb-0 fw-bolder">Resumo do Pedido</h4>
             </div>
-            <div className="card-body p-4">
+            <div className="card-body p-4 pt-3">
+              {/* Seção do cupom de desconto - AGORA NO TOPO */}
+              <div className="mb-3">
+                <label htmlFor="cupom" className="form-label mb-2">
+                  cupom de desconto
+                </label>
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className={`form-control ${
+                      cupomError ? "is-invalid" : ""
+                    } bg-transparent border-dark-subtle`}
+                    id="cupom"
+                    placeholder="Digite seu cupom"
+                    value={cupom}
+                    onKeyDown={(e) => e.key === "Enter" && aplicarCupom()}
+                    onChange={(e) => setCupom(e.target.value)}
+                    disabled={cupomAplicado}
+                  />
+                  {!cupomAplicado ? (
+                    <button
+                      id="addCarrinho"
+                      className="btn btn-success desconto text-light border-0"
+                      type="button"
+                      onClick={aplicarCupom}
+                    >
+                      Aplicar
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-outline-danger"
+                      type="button"
+                      onClick={removerCupom}
+                    >
+                      <i className="bi bi-x"></i>
+                    </button>
+                  )}
+                </div>
+                {cupomError && (
+                  <div className="text-danger small mt-1">{cupomError}</div>
+                )}
+              </div>
+
+              {/* PRIMEIRO DIVISOR */}
+              <hr className="my-3" />
+
+              {/* Seção de subtotal e frete */}
               <div className="d-flex justify-content-between mb-2">
                 <span>
                   Subtotal ({carrinho.length}{" "}
                   {carrinho.length === 1 ? "item" : "itens"})
                 </span>
-                <span>{formatarMoeda(total)}</span>
+                <span>{formatarMoeda(subtotal)}</span>
               </div>
               <div className="d-flex justify-content-between mb-2">
                 <span>Frete</span>
                 <span className="text-success">Grátis</span>
               </div>
 
+              {/* Exibe o desconto do cupom quando aplicado */}
+              {cupomAplicado && (
+                <div className="d-flex justify-content-between mb-2 mt-2">
+                  <span className="text-success">Desconto (10%)</span>
+                  <span className="text-success">
+                    -{formatarMoeda(descontoCupom)}
+                  </span>
+                </div>
+              )}
+
+              {/* SEGUNDO DIVISOR */}
               <hr className="my-3" />
 
+              {/* Seção do total */}
               <div className="d-flex justify-content-between mb-4">
                 <span className="fw-bold">Total</span>
                 <span className="fw-bold fs-4">{formatarMoeda(total)}</span>
               </div>
 
+              {/* Botões de ação */}
               <button
                 id="addCarrinho"
                 className="btn btn-success desconto border-0 text-light w-100 py-3 fw-bold"
